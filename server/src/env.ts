@@ -1,9 +1,41 @@
 import { z } from 'zod';
 import { config } from 'dotenv';
 import path from 'node:path';
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
-// Load the repo-root .env (server cwd is the workspace, so .env lives one level up).
-config({ path: path.resolve(import.meta.dirname, '..', '..', '.env') });
+// Resolve this file's directory in a way that survives both ESM (tsx, node) and
+// CJS bundling (drizzle-kit transpiles via esbuild → cjs, which makes
+// `import.meta.dirname` empty). Fall back to process.cwd() when neither is
+// available.
+function resolveHere(): string {
+  try {
+    if (typeof import.meta !== 'undefined' && import.meta.url) {
+      return path.dirname(fileURLToPath(import.meta.url));
+    }
+  } catch {
+    /* noop */
+  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const cjsDirname = (globalThis as any).__dirname as string | undefined;
+  return cjsDirname ?? process.cwd();
+}
+
+// The repo-root .env may live at <here>/../../.env (when running from src/) or
+// at <cwd>/../.env (when drizzle-kit runs from the server workspace) or at
+// <cwd>/.env (when running from repo root). Try each in order.
+const here = resolveHere();
+const candidates = [
+  path.resolve(here, '..', '..', '.env'),
+  path.resolve(process.cwd(), '..', '.env'),
+  path.resolve(process.cwd(), '.env'),
+];
+for (const candidate of candidates) {
+  if (existsSync(candidate)) {
+    config({ path: candidate });
+    break;
+  }
+}
 
 const Schema = z.object({
   DB_DRIVER: z.enum(['sqlite', 'neon']),
