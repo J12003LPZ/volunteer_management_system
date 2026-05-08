@@ -29,4 +29,44 @@ describe('loadEnv', () => {
       })
     ).toThrow();
   });
+
+  it('rejects sqlite driver with no SQLITE_PATH', () => {
+    expect(() =>
+      loadEnv({
+        DB_DRIVER: 'sqlite',
+        JWT_SECRET: 'a'.repeat(32),
+        STORAGE_DRIVER: 'local',
+        UPLOAD_DIR: './up',
+        PORT: '4000',
+        CLIENT_URL: 'http://localhost:5173',
+      })
+    ).toThrow(/SQLITE_PATH required/);
+  });
+
+  it('rejects neon driver with no DATABASE_URL', () => {
+    expect(() =>
+      loadEnv({
+        DB_DRIVER: 'neon',
+        JWT_SECRET: 'a'.repeat(32),
+        STORAGE_DRIVER: 'local',
+        UPLOAD_DIR: './up',
+        PORT: '4000',
+        CLIENT_URL: 'http://localhost:5173',
+      })
+    ).toThrow(/DATABASE_URL required/);
+  });
+
+  it('rejects cloudinary storage with missing keys', () => {
+    expect(() =>
+      loadEnv({
+        DB_DRIVER: 'sqlite',
+        SQLITE_PATH: './x.db',
+        JWT_SECRET: 'a'.repeat(32),
+        STORAGE_DRIVER: 'cloudinary',
+        UPLOAD_DIR: './up',
+        PORT: '4000',
+        CLIENT_URL: 'http://localhost:5173',
+      })
+    ).toThrow(/CLOUDINARY/);
+  });
 });

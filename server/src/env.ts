@@ -45,4 +45,14 @@ export function loadEnv(
   return env;
 }
 
-export const env = loadEnv();
+let _env: Env | null = null;
+export function getEnv(): Env {
+  if (!_env) _env = loadEnv();
+  return _env;
+}
+
+// Backwards-compat: callers that imported `env` as a value still work,
+// but the call is deferred via a Proxy that resolves on first property access.
+export const env: Env = new Proxy({} as Env, {
+  get(_target, prop) { return getEnv()[prop as keyof Env]; },
+});
