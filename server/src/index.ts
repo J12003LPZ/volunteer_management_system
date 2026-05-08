@@ -1,13 +1,18 @@
 import express from 'express';
 import cors from 'cors';
 import { pathToFileURL } from 'node:url';
-import { env } from './env';
+import { getEnv } from './env';
+import authRoutes from './routes/auth';
+import { errorHandler } from './middleware/error';
 
 export function createApp() {
+  const env = getEnv();
   const app = express();
   app.use(cors({ origin: env.CLIENT_URL, credentials: true }));
   app.use(express.json({ limit: '2mb' }));
   app.get('/api/health', (_req, res) => res.json({ ok: true, driver: env.DB_DRIVER }));
+  app.use('/api/auth', authRoutes);
+  app.use(errorHandler);
   return app;
 }
 
@@ -16,6 +21,7 @@ const isDirectRun =
   process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
 
 if (isDirectRun) {
+  const env = getEnv();
   const app = createApp();
   app.listen(env.PORT, () => console.log(`API on :${env.PORT} (db=${env.DB_DRIVER})`));
 }
