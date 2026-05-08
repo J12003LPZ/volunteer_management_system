@@ -7,6 +7,7 @@ import volunteersRoutes from './routes/volunteers';
 import eventsRoutes from './routes/events';
 import shiftsRoutes from './routes/shifts';
 import attendanceRoutes from './routes/attendance';
+import messagesRoutes from './routes/messages';
 import { errorHandler } from './middleware/error';
 
 export function createApp() {
@@ -20,6 +21,7 @@ export function createApp() {
   app.use('/api/events', eventsRoutes);
   app.use('/api/shifts', shiftsRoutes);
   app.use('/api/attendance', attendanceRoutes);
+  app.use('/api/messages', messagesRoutes);
   app.use(errorHandler);
   return app;
 }
