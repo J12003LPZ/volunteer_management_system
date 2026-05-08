@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Event Details - VolunteerHub Admin Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#996100",
+                        "inverse-primary": "#b4c5ff",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#0053db",
+                        "primary": "#004ac6",
+                        "surface-bright": "#f8f9ff",
+                        "outline": "#737686",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-secondary-fixed-variant": "#005236",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-high": "#dce9ff",
+                        "tertiary": "#784b00",
+                        "on-surface": "#0b1c30",
+                        "surface-dim": "#cbdbf5",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-tertiary-container": "#ffeedd",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#eeefff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "primary-container": "#2563eb",
+                        "inverse-surface": "#213145",
+                        "on-secondary-fixed": "#002113",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-background": "#0b1c30",
+                        "secondary": "#006c49",
+                        "surface-container": "#e5eeff",
+                        "secondary-fixed": "#6ffbbe",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-secondary-container": "#00714d",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#00174b",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "background": "#f8f9ff",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "secondary-container": "#6cf8bb",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#434655",
+                        "outline-variant": "#c3c6d7",
+                        "surface": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#d3e4fe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "stack-md": "16px",
+                        "sidebar-width": "260px",
+                        "stack-sm": "8px",
+                        "container-padding": "24px",
+                        "gutter": "16px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "title-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "title-sm": ["18px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-surface-dim h-16 fixed top-0 right-0 z-40 border-b border-outline-variant dark:border-outline flex justify-between items-center px-container-padding ml-sidebar-width w-[calc(100%-260px)]">
+<div class="flex items-center gap-stack-md">
+<!-- Search placeholder, assuming search_bar: on_left means it's on the left side of the right-aligned nav items -->
+<div class="relative w-64 hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">search</span>
+<input class="w-full h-10 pl-10 pr-4 rounded-full bg-surface-container border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none font-body-sm text-body-sm text-on-surface transition-colors duration-200" placeholder="Search..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-full transition-all cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-full transition-all cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">help</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden cursor-pointer active:opacity-80 transition-all">
+<img alt="Admin User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a mature male admin user, smiling gently. Soft, bright lighting typical of a modern corporate portrait. The background is a clean, slightly blurred office environment with cool grey and subtle blue tones matching the global UI palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDETAZfdtPekmTMDvzrv-t_eAEI2RjgxaiSIABEGkb0Agk9GiMCLxk2Y8-ptq4Atg26Nk3zER3GWnICzYz9961QQbaFZNuOLlf05d1RrEsREvEiM5lq_2TzUHnhnFGtyBIpN7nEzDaBxBundadiV6QMPXFKv0ZSWeNw1OR-PdoO3IoMnjWk9NRsc3fnYDa2Wu9N-aeEp3d3f58V8-mKvrvl1D8j_s-u3UH2efhSTcQuBF1nlemfV9_Ld_PSiXPqwLshMzkMQnNPEgA_"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="bg-surface-container-lowest dark:bg-surface-container-low w-sidebar-width h-screen fixed left-0 top-0 shadow-sm shadow-[0px_4px_12px_rgba(0,0,0,0.05)] z-50 flex flex-col h-full py-container-padding">
+<div class="px-container-padding mb-stack-lg flex flex-col items-start gap-stack-sm">
+<div class="w-12 h-12 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center font-display-lg font-bold">
+                V
+            </div>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary dark:text-inverse-primary">VolunteerHub</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Admin Portal</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1 px-stack-sm overflow-y-auto">
+<a class="flex items-center gap-stack-md px-stack-sm py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-stack-md px-stack-sm py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">group</span>
+<span class="font-body-md text-body-md">Volunteers</span>
+</a>
+<a class="flex items-center gap-stack-md px-stack-sm py-3 text-primary dark:text-primary-fixed-dim border-l-4 border-primary font-bold bg-surface-container-low dark:bg-surface-container-high transition-colors duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">event</span>
+<span class="font-body-md text-body-md">Events</span>
+</a>
+<a class="flex items-center gap-stack-md px-stack-sm py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">how_to_reg</span>
+<span class="font-body-md text-body-md">Attendance</span>
+</a>
+<a class="flex items-center gap-stack-md px-stack-sm py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">assessment</span>
+<span class="font-body-md text-body-md">Reports</span>
+</a>
+<a class="flex items-center gap-stack-md px-stack-sm py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">forum</span>
+<span class="font-body-md text-body-md">Messaging</span>
+</a>
+<a class="flex items-center gap-stack-md px-stack-sm py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<div class="px-container-padding mt-auto">
+<button class="w-full py-3 bg-primary text-on-primary rounded-lg font-title-sm text-title-sm shadow-md hover:bg-primary-container hover:text-on-primary-container transition-colors duration-200 flex items-center justify-center gap-2 active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+                Create Event
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-sidebar-width mt-16 p-container-padding max-w-[1440px] mx-auto min-h-[calc(100vh-64px)]">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row justify-between items-start md:items-end gap-stack-md mb-stack-lg pb-stack-sm border-b border-outline-variant">
+<div>
+<div class="flex items-center gap-stack-sm mb-2">
+<span class="px-2 py-1 bg-primary-container text-on-primary-container rounded-full font-label-caps text-label-caps">Upcoming</span>
+<span class="px-2 py-1 bg-surface-container-high text-on-surface-variant rounded-full font-label-caps text-label-caps">High Priority</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-on-surface mb-stack-sm">Annual Community Park Cleanup</h2>
+<div class="flex flex-wrap gap-stack-md font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span>Saturday, Oct 28, 2023</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span>08:00 AM - 02:00 PM</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span>Centennial Park, Main Pavilion</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-stack-sm w-full md:w-auto">
+<button class="flex-1 md:flex-none px-4 py-2 border border-outline text-primary rounded-lg font-title-sm text-title-sm hover:bg-surface-container hover:border-primary transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+                    Edit Event
+                </button>
+<button class="flex-1 md:flex-none px-4 py-2 bg-secondary text-on-secondary rounded-lg font-title-sm text-title-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors shadow-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+                    Mark Completed
+                </button>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-container-padding">
+<!-- Left Column: Primary Details -->
+<div class="lg:col-span-2 flex flex-col gap-container-padding">
+<!-- Description Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant overflow-hidden">
+<div class="p-container-padding border-b border-outline-variant bg-surface-bright flex justify-between items-center">
+<h3 class="font-title-sm text-title-sm text-on-surface">Event Description</h3>
+<span class="material-symbols-outlined text-outline">description</span>
+</div>
+<div class="p-container-padding font-body-md text-body-md text-on-surface-variant leading-relaxed">
+<p class="mb-4">Join us for our largest community effort of the season. Volunteers will assist in clearing debris, planting new saplings in the east garden, and repainting the main pavilion structures. Please dress appropriately for outdoor physical labor and unpredictable weather.</p>
+<div class="mt-stack-md p-stack-md bg-surface-container-low rounded-lg border border-outline-variant flex items-start gap-stack-md">
+<div class="w-12 h-12 rounded-full overflow-hidden shrink-0 border border-outline">
+<img alt="Coordinator Profile" class="w-full h-full object-cover" data-alt="A friendly headshot of a female volunteer coordinator in her 30s. She is smiling broadly, wearing a casual light blue polo shirt. The background is a bright, softly blurred park setting with lush green trees, aligning with the cool, fresh aesthetic of the overall UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmYmekC30Z9eB4-SnjtrVe4Us0G-1KdJohWl_yzHIIrT1hIITRLq3wqH46XyVZpIkwweovPnVjqQA7FsZnVH6MSgkFpdvjFP0KuVLEr3fXtJboY8UOh2-F6S_gTN5j4ZEP7MRsM5dXlfFfk1HeSiWM9l_0QLjk3IdT4ytJrC-pvChURQOUbkzCU6VR3AR57AIaGYn1t9PZ-6E6DonvWxDBqMiRRZPfEIwnq9-ROWddcoTQIWhaYS5S1ze3s_TraI1dC99Oc8rGEDhV"/>
+</div>
+<div>
+<h4 class="font-title-sm text-title-sm text-on-surface">Sarah Jenkins</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Lead Coordinator</p>
+<div class="flex items-center gap-stack-sm mt-1">
+<span class="flex items-center gap-1 font-body-sm text-body-sm text-primary"><span class="material-symbols-outlined text-[16px]">call</span> (555) 123-4567</span>
+<span class="flex items-center gap-1 font-body-sm text-body-sm text-primary"><span class="material-symbols-outlined text-[16px]">mail</span> sarah.j@volunteerhub.org</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Shift Schedule -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant overflow-hidden">
+<div class="p-container-padding border-b border-outline-variant bg-surface-bright flex justify-between items-center">
+<h3 class="font-title-sm text-title-sm text-on-surface">Shift Schedule</h3>
+<span class="material-symbols-outlined text-outline">view_timeline</span>
+</div>
+<div class="p-stack-md flex flex-col gap-stack-sm">
+<!-- Shift 1 -->
+<div class="p-stack-md rounded-lg border border-outline-variant hover:border-primary transition-colors bg-surface flex flex-col sm:flex-row justify-between items-start sm:items-center gap-stack-md">
+<div class="flex items-start gap-stack-md">
+<div class="bg-surface-container w-12 h-12 rounded-lg flex flex-col items-center justify-center shrink-0 border border-outline-variant">
+<span class="font-label-caps text-label-caps text-on-surface-variant leading-none">AM</span>
+<span class="font-title-sm text-title-sm text-primary leading-none mt-1">08</span>
+</div>
+<div>
+<h4 class="font-title-sm text-title-sm text-on-surface">Morning Setup &amp; Cleaning</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">08:00 AM - 11:30 AM</p>
+</div>
+</div>
+<div class="flex items-center gap-stack-md w-full sm:w-auto justify-between sm:justify-end">
+<div class="text-right">
+<p class="font-label-caps text-label-caps text-on-surface-variant">Staffing</p>
+<p class="font-title-sm text-title-sm text-on-surface">15<span class="text-outline">/20</span></p>
+</div>
+<button class="px-3 py-1.5 border border-outline text-primary rounded-lg font-body-sm text-body-sm hover:bg-surface-container transition-colors">Manage</button>
+</div>
+</div>
+<!-- Shift 2 -->
+<div class="p-stack-md rounded-lg border border-outline-variant hover:border-primary transition-colors bg-surface flex flex-col sm:flex-row justify-between items-start sm:items-center gap-stack-md">
+<div class="flex items-start gap-stack-md">
+<div class="bg-surface-container w-12 h-12 rounded-lg flex flex-col items-center justify-center shrink-0 border border-outline-variant">
+<span class="font-label-caps text-label-caps text-on-surface-variant leading-none">PM</span>
+<span class="font-title-sm text-title-sm text-primary leading-none mt-1">12</span>
+</div>
+<div>
+<h4 class="font-title-sm text-title-sm text-on-surface">Afternoon Planting &amp; Tear-down</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">12:00 PM - 02:00 PM</p>
+</div>
+</div>
+<div class="flex items-center gap-stack-md w-full sm:w-auto justify-between sm:justify-end">
+<div class="text-right">
+<p class="font-label-caps text-label-caps text-on-surface-variant">Staffing</p>
+<p class="font-title-sm text-title-sm text-secondary">25<span class="text-outline">/25</span></p>
+</div>
+<button class="px-3 py-1.5 border border-outline text-primary rounded-lg font-body-sm text-body-sm hover:bg-surface-container transition-colors">Manage</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Assigned Volunteers Table -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant overflow-hidden">
+<div class="p-container-padding border-b border-outline-variant bg-surface-bright flex justify-between items-center">
+<h3 class="font-title-sm text-title-sm text-on-surface">Assigned Volunteers (40)</h3>
+<div class="flex gap-2">
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container rounded-md transition-colors"><span class="material-symbols-outlined text-[20px]">filter_list</span></button>
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container rounded-md transition-colors"><span class="material-symbols-outlined text-[20px]">download</span></button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant font-label-caps text-label-caps text-on-surface-variant">
+<th class="p-stack-md font-semibold">Volunteer</th>
+<th class="p-stack-md font-semibold">Shift</th>
+<th class="p-stack-md font-semibold">Role</th>
+<th class="p-stack-md font-semibold text-right">Status</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface align-middle">
+<tr class="border-b border-outline-variant hover:bg-surface-bright transition-colors">
+<td class="p-stack-md">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-xs">MR</div>
+<span class="font-medium">Marcus Rodriguez</span>
+</div>
+</td>
+<td class="p-stack-md text-on-surface-variant">Morning Setup</td>
+<td class="p-stack-md text-on-surface-variant">Team Leader</td>
+<td class="p-stack-md text-right">
+<button class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-medium border border-secondary-fixed-dim hover:opacity-80 transition-opacity">Checked In</button>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-bright transition-colors">
+<td class="p-stack-md">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-bold text-xs">EL</div>
+<span class="font-medium">Emma Lawson</span>
+</div>
+</td>
+<td class="p-stack-md text-on-surface-variant">Afternoon Planting</td>
+<td class="p-stack-md text-on-surface-variant">General</td>
+<td class="p-stack-md text-right">
+<button class="px-3 py-1 bg-surface-container text-on-surface rounded-full text-xs font-medium border border-outline hover:border-primary hover:text-primary transition-colors">Check In</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="p-stack-md">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold text-xs">DK</div>
+<span class="font-medium">David Kim</span>
+</div>
+</td>
+<td class="p-stack-md text-on-surface-variant">Morning Setup</td>
+<td class="p-stack-md text-on-surface-variant">Heavy Lifting</td>
+<td class="p-stack-md text-right">
+<button class="px-3 py-1 bg-error-container text-on-error-container rounded-full text-xs font-medium border border-[#ffb4ab] hover:opacity-80 transition-opacity">No Show</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-3 border-t border-outline-variant text-center bg-surface-bright">
+<button class="text-primary font-title-sm text-title-sm hover:underline">View All 40 Volunteers</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Contextual & Auxiliary -->
+<div class="flex flex-col gap-container-padding">
+<!-- Staffing Overview (Circular Progress Proxy) -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant p-container-padding flex flex-col items-center justify-center text-center">
+<h3 class="font-title-sm text-title-sm text-on-surface w-full text-left mb-6">Staffing Overview</h3>
+<!-- CSS Circular Progress Bar simulation -->
+<div class="relative w-32 h-32 mb-4">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<!-- Background circle -->
+<circle class="text-surface-container-high" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-width="8"></circle>
+<!-- Progress circle (approx 88%) -->
+<circle class="text-primary transition-all duration-1000 ease-out" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="30.1" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display-lg text-display-lg text-on-surface leading-none">40</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">/45</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-2">Almost fully staffed!</p>
+<p class="font-body-sm text-body-sm text-outline mb-4">Need 5 more for Morning Shift.</p>
+<button class="w-full py-2 bg-surface-container border border-outline text-primary rounded-lg font-title-sm text-title-sm hover:bg-primary-container hover:text-on-primary-container hover:border-transparent transition-colors">Broadcast Request</button>
+</div>
+<!-- Notes / Internal Log -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant overflow-hidden flex flex-col flex-grow">
+<div class="p-container-padding border-b border-outline-variant bg-surface-bright flex justify-between items-center">
+<h3 class="font-title-sm text-title-sm text-on-surface">Coordinator Notes</h3>
+<span class="material-symbols-outlined text-outline">edit_note</span>
+</div>
+<div class="p-stack-md flex-grow flex flex-col gap-stack-sm bg-[#fafafa]">
+<div class="p-3 bg-[#fff8e1] border border-[#ffe082] rounded-lg text-on-surface font-body-sm text-body-sm">
+<span class="font-semibold block mb-1">Logistics Update:</span>
+                            Trucks arriving at 7:30 AM via South Gate. Ensure gate is unlocked.
+                            <span class="block text-xs text-outline mt-2">Added yesterday by Sarah J.</span>
+</div>
+<div class="p-3 bg-surface border border-outline-variant rounded-lg text-on-surface font-body-sm text-body-sm">
+<span class="font-semibold block mb-1">Weather Watch:</span>
+                            Slight chance of rain at 1 PM. Tents ready in shed B.
+                            <span class="block text-xs text-outline mt-2">Added 2 hours ago by Sarah J.</span>
+</div>
+</div>
+<div class="p-3 border-t border-outline-variant bg-surface-bright">
+<div class="flex gap-2">
+<input class="flex-grow h-10 px-3 rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none font-body-sm text-body-sm text-on-surface" placeholder="Add a note..." type="text"/>
+<button class="w-10 h-10 bg-primary-container text-on-primary-container rounded-lg flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Volunteer Management System - Volunteers</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-container": "#996100",
+                      "inverse-primary": "#b4c5ff",
+                      "on-error": "#ffffff",
+                      "error": "#ba1a1a",
+                      "surface-tint": "#0053db",
+                      "primary": "#004ac6",
+                      "surface-bright": "#f8f9ff",
+                      "outline": "#737686",
+                      "on-tertiary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed": "#ffddb8",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-secondary-fixed-variant": "#005236",
+                      "primary-fixed": "#dbe1ff",
+                      "surface-container-low": "#eff4ff",
+                      "surface-container-high": "#dce9ff",
+                      "tertiary": "#784b00",
+                      "on-surface": "#0b1c30",
+                      "surface-dim": "#cbdbf5",
+                      "secondary-fixed-dim": "#4edea3",
+                      "on-tertiary-container": "#ffeedd",
+                      "on-tertiary-fixed": "#2a1700",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-container": "#eeefff",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "primary-container": "#2563eb",
+                      "inverse-surface": "#213145",
+                      "on-secondary-fixed": "#002113",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "on-background": "#0b1c30",
+                      "secondary": "#006c49",
+                      "surface-container": "#e5eeff",
+                      "secondary-fixed": "#6ffbbe",
+                      "inverse-on-surface": "#eaf1ff",
+                      "on-secondary-container": "#00714d",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed": "#00174b",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "background": "#f8f9ff",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "secondary-container": "#6cf8bb",
+                      "on-primary": "#ffffff",
+                      "on-surface-variant": "#434655",
+                      "outline-variant": "#c3c6d7",
+                      "surface": "#f8f9ff",
+                      "error-container": "#ffdad6",
+                      "surface-variant": "#d3e4fe"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "stack-md": "16px",
+                      "sidebar-width": "260px",
+                      "stack-sm": "8px",
+                      "container-padding": "24px",
+                      "gutter": "16px",
+                      "stack-lg": "32px"
+              },
+              "fontFamily": {
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "title-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "title-sm": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-surface-dim h-16 fixed top-0 right-0 z-40 border-b border-outline-variant dark:border-outline flex justify-between items-center px-container-padding ml-sidebar-width w-[calc(100%-260px)] hidden md:flex">
+<div class="flex items-center gap-stack-md">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-full font-body-sm text-body-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-64" placeholder="Search..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="Admin User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of an administrative user. The portrait is taken against a clean, light background, fitting the modern corporate aesthetic. The lighting is soft and flattering, highlighting the subject's features clearly. The overall mood is approachable yet established." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqmXkxFu2LAVrNpVxHpCiUSPSshPCjh18FokfT95m0366p_sny4WF8yM7W00DxSgq1XlZhh6w-IiaV4_qSzvgrhkK-X3aRGuh_INpZJqJXzx6yN8bW3G77UsmC7iH14f4-Z3yI6K74WIdUWoghLuPzJy4LVESAagPfA3SlguHWakUVCulrLbyObv5cQdNY3rEGb4hCqrMSCyiM4LrJkhm--BM4A4VuX04ybNsn5-c3GApgdIQRJyVzgR4EbA05KUzmiYml_6kLr6gc"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="bg-surface-container-lowest dark:bg-surface-container-low w-sidebar-width h-screen fixed left-0 top-0 shadow-sm flex flex-col h-full py-container-padding z-50">
+<div class="px-container-padding mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container">volunteer_activism</span>
+</div>
+<div>
+<h1 class="font-title-sm text-title-sm font-semibold text-primary dark:text-inverse-primary">VolunteerHub</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-xs">Admin Portal</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto px-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary dark:text-primary-fixed-dim border-l-4 border-primary font-bold bg-surface-container-low dark:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-body-md text-body-md">Volunteers</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">event</span>
+<span class="font-body-md text-body-md">Events</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-body-md text-body-md">Attendance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-body-md text-body-md">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-body-md text-body-md">Messaging</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<div class="px-container-padding mt-auto">
+<button class="w-full py-3 bg-primary text-on-primary rounded-lg font-title-sm text-title-sm hover:bg-surface-tint transition-colors flex justify-center items-center gap-2 active:scale-95 transition-transform shadow-[0px_4px_12px_rgba(0,0,0,0.05)]">
+<span class="material-symbols-outlined">add</span>
+                Create Event
+            </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-0 md:ml-sidebar-width pt-16 md:pt-24 p-container-padding max-w-[1440px] mx-auto min-h-screen">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface">Volunteers</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Manage and view your volunteer workforce.</p>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-title-sm text-title-sm hover:bg-surface-tint transition-colors flex items-center gap-2 shadow-[0px_4px_12px_rgba(0,0,0,0.05)]">
+<span class="material-symbols-outlined">person_add</span>
+                Add Volunteer
+            </button>
+</div>
+<!-- Filter & Search Bar -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] p-4 mb-6 border border-outline-variant flex flex-col lg:flex-row gap-4 items-center justify-between">
+<div class="relative w-full lg:w-1/3">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-surface rounded-lg border border-outline-variant font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Search volunteers by name, email..." type="text"/>
+</div>
+<div class="flex flex-wrap items-center gap-3 w-full lg:w-auto">
+<select class="bg-surface border border-outline-variant text-on-surface text-body-sm font-body-sm rounded-lg focus:ring-primary focus:border-primary block p-2.5">
+<option selected="">Status</option>
+<option value="active">Active</option>
+<option value="pending">Pending</option>
+<option value="inactive">Inactive</option>
+</select>
+<select class="bg-surface border border-outline-variant text-on-surface text-body-sm font-body-sm rounded-lg focus:ring-primary focus:border-primary block p-2.5">
+<option selected="">Skill</option>
+<option value="first-aid">First Aid</option>
+<option value="driving">Driving</option>
+<option value="event-setup">Event Setup</option>
+<option value="admin">Administration</option>
+</select>
+<select class="bg-surface border border-outline-variant text-on-surface text-body-sm font-body-sm rounded-lg focus:ring-primary focus:border-primary block p-2.5">
+<option selected="">Availability</option>
+<option value="weekends">Weekends</option>
+<option value="weekdays">Weekdays</option>
+<option value="evenings">Evenings</option>
+</select>
+<button class="text-on-surface-variant hover:text-primary flex items-center gap-1 font-body-sm text-body-sm px-2 py-2 rounded transition-colors">
+<span class="material-symbols-outlined text-sm">filter_alt_off</span>
+                    Clear
+                </button>
+</div>
+</div>
+<!-- Data Table Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead class="bg-surface border-b border-outline-variant text-on-surface-variant font-label-caps text-label-caps uppercase">
+<tr>
+<th class="px-6 py-4" scope="col">Name</th>
+<th class="px-6 py-4" scope="col">Contact Info</th>
+<th class="px-6 py-4" scope="col">Status</th>
+<th class="px-6 py-4" scope="col">Skills</th>
+<th class="px-6 py-4" scope="col">Availability</th>
+<th class="px-6 py-4 text-right" scope="col">Total Hours</th>
+<th class="px-6 py-4 text-center" scope="col">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant">
+<img alt="Sarah Jenkins Avatar" class="w-full h-full object-cover" data-alt="A vibrant headshot of a female volunteer. She is smiling warmly in a bright, outdoor setting. The image uses a modern, high-key lighting style consistent with a clean corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJ4kfP7ypO110Oh8E7FAxXPBhGx5O4BCr3Fp38JrZfrnKaddj-SMbe2b1UMW3omr0JF20V7UcXFXTxIMGbv1Yf5jg8qphqlRdtl9kYG3SfjT_iR7-N04cEygxFfrQqImQAIr7VoyfvW7FeFww6kkLTAkG2xJybrhM6cGAXhF5M30zv5x8LeBTPA6bP7QdMpctKwvTcRPBFodKBXCWn-xu_LxWWRd2idmxqT4xhNovtIuFIo7iPGv2KqWB7qoxMl1qN_KDMGixDe78A"/>
+</div>
+<div>
+<p class="font-title-sm text-title-sm text-on-surface">Sarah Jenkins</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Joined Jan 2023</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="text-on-surface">sarah.j@example.com</p>
+<p class="text-on-surface-variant text-xs">(555) 123-4567</p>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-caps text-label-caps">
+<span class="w-1.5 h-1.5 rounded-full bg-on-secondary-container"></span>
+                                    Active
+                                </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded border border-outline-variant text-on-surface-variant text-xs">First Aid</span>
+<span class="px-2 py-0.5 rounded border border-outline-variant text-on-surface-variant text-xs">Event Setup</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">
+                                Weekends
+                            </td>
+<td class="px-6 py-4 text-right font-semibold text-on-surface">
+                                145 hrs
+                            </td>
+<td class="px-6 py-4">
+<div class="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-surface-variant text-primary transition-colors" title="View">
+<span class="material-symbols-outlined text-sm">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-surface-variant text-on-surface-variant transition-colors" title="Edit">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-error-container text-error transition-colors" title="Delete">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-surface-bright hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-primary-container text-on-primary-container font-title-sm text-title-sm">
+                                        MR
+                                    </div>
+<div>
+<p class="font-title-sm text-title-sm text-on-surface">Marcus Rodriguez</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Applied Oct 2023</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="text-on-surface">m.rodriguez@email.com</p>
+<p class="text-on-surface-variant text-xs">(555) 987-6543</p>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-caps text-label-caps">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-fixed"></span>
+                                    Pending
+                                </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded border border-outline-variant text-on-surface-variant text-xs">Driving</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">
+                                Flexible
+                            </td>
+<td class="px-6 py-4 text-right font-semibold text-on-surface">
+                                0 hrs
+                            </td>
+<td class="px-6 py-4">
+<div class="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-surface-variant text-primary transition-colors" title="View">
+<span class="material-symbols-outlined text-sm">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-surface-variant text-on-surface-variant transition-colors" title="Edit">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-error-container text-error transition-colors" title="Delete">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant">
+<img alt="David Chen Avatar" class="w-full h-full object-cover" data-alt="A portrait of a male volunteer with a neutral, professional expression. The background is slightly blurred to emphasize the subject. The lighting is balanced and natural, fitting a modern organizational profile style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuApCZ5i11duDs9Bfy-NNGsSEV21iRxcYSsjO1u411YeoS5FLnXrMuk0t-47G_2XnKoNHs-hS0VR_HqIu48kbWkySmf2TQY6Nj2jAK9xqHcgQbdtoZEpp-_CQbTshogL-_Cgda_ameOE5_Sy3kibaDwW6ZmyfJSaivV72C5LHBqsWxFHVcA5uLGB9IjHerJ95Js6I4liqKvJK3c1eUzjqAxmEj96008cMEcyDXvGAcRCPbYmbKbrmiJtwWocbRV4c1jyR_XWhHXRGhgU"/>
+</div>
+<div>
+<p class="font-title-sm text-title-sm text-on-surface">David Chen</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Joined Mar 2022</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="text-on-surface">david.c@company.net</p>
+<p class="text-on-surface-variant text-xs">(555) 246-8101</p>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-highest text-on-surface font-label-caps text-label-caps">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                                    Inactive
+                                </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded border border-outline-variant text-on-surface-variant text-xs">Admin</span>
+<span class="px-2 py-0.5 rounded border border-outline-variant text-on-surface-variant text-xs">Data Entry</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">
+                                Weekdays
+                            </td>
+<td class="px-6 py-4 text-right font-semibold text-on-surface">
+                                320 hrs
+                            </td>
+<td class="px-6 py-4">
+<div class="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-surface-variant text-primary transition-colors" title="View">
+<span class="material-symbols-outlined text-sm">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-surface-variant text-on-surface-variant transition-colors" title="Edit">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-error-container text-error transition-colors" title="Delete">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 border-t border-outline-variant flex items-center justify-between bg-surface">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Showing 1 to 3 of 45 entries</span>
+<div class="flex items-center gap-2">
+<button class="p-1 rounded hover:bg-surface-container-high text-on-surface-variant transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded bg-primary text-on-primary font-body-sm text-body-sm flex items-center justify-center">1</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container-high text-on-surface font-body-sm text-body-sm flex items-center justify-center transition-colors">2</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container-high text-on-surface font-body-sm text-body-sm flex items-center justify-center transition-colors">3</button>
+<span class="text-on-surface-variant">...</span>
+<button class="p-1 rounded hover:bg-surface-container-high text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

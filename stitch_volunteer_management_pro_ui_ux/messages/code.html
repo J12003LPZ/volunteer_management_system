@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Messaging - VolunteerHub Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-container": "#996100",
+                      "inverse-primary": "#b4c5ff",
+                      "on-error": "#ffffff",
+                      "error": "#ba1a1a",
+                      "surface-tint": "#0053db",
+                      "primary": "#004ac6",
+                      "surface-bright": "#f8f9ff",
+                      "outline": "#737686",
+                      "on-tertiary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed": "#ffddb8",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-secondary-fixed-variant": "#005236",
+                      "primary-fixed": "#dbe1ff",
+                      "surface-container-low": "#eff4ff",
+                      "surface-container-high": "#dce9ff",
+                      "tertiary": "#784b00",
+                      "on-surface": "#0b1c30",
+                      "surface-dim": "#cbdbf5",
+                      "secondary-fixed-dim": "#4edea3",
+                      "on-tertiary-container": "#ffeedd",
+                      "on-tertiary-fixed": "#2a1700",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-container": "#eeefff",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "primary-container": "#2563eb",
+                      "inverse-surface": "#213145",
+                      "on-secondary-fixed": "#002113",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "on-background": "#0b1c30",
+                      "secondary": "#006c49",
+                      "surface-container": "#e5eeff",
+                      "secondary-fixed": "#6ffbbe",
+                      "inverse-on-surface": "#eaf1ff",
+                      "on-secondary-container": "#00714d",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed": "#00174b",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "background": "#f8f9ff",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "secondary-container": "#6cf8bb",
+                      "on-primary": "#ffffff",
+                      "on-surface-variant": "#434655",
+                      "outline-variant": "#c3c6d7",
+                      "surface": "#f8f9ff",
+                      "error-container": "#ffdad6",
+                      "surface-variant": "#d3e4fe"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "stack-md": "16px",
+                      "sidebar-width": "260px",
+                      "stack-sm": "8px",
+                      "container-padding": "24px",
+                      "gutter": "16px",
+                      "stack-lg": "32px"
+              },
+              "fontFamily": {
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "title-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "title-sm": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md overflow-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface-dim h-16 fixed top-0 right-0 z-40 border-b border-outline-variant dark:border-outline flex justify-between items-center px-container-padding ml-sidebar-width w-[calc(100%-260px)] hidden md:flex">
+<div class="flex items-center gap-stack-md">
+<!-- Search left as per JSON, but implicitly handled or omitted if no specific design requested, adding simple search icon -->
+<div class="flex items-center bg-surface-container-low rounded-full px-4 py-2">
+<span class="material-symbols-outlined text-on-surface-variant mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm font-body-sm text-on-surface w-64 placeholder:text-on-surface-variant/50" placeholder="Search messages..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-full transition-all cursor-pointer active:opacity-80 p-2 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-full transition-all cursor-pointer active:opacity-80 p-2 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-title-sm text-title-sm ml-2 cursor-pointer">
+<img alt="Admin User Profile" class="w-full h-full rounded-full object-cover" data-alt="A small, circular profile picture of an administrator with a professional and friendly demeanor, set against a soft, well-lit background. The style is clean and corporate, aligning with a modern light-mode interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBestC5b9cJqP9uveNUJ6-90Clgh0zAxbQWPhvszEJUNXyPyBhBBa3n7gQe1yGgX0SYojKciu3RjRXQ5pfCY48QI1j-OmffSG5OzO_Emw4QLyXS6-DDKCmZYPJhgm7yD6RbFgeqhgOaWN30WMnmrjLltNKignz2qBmOe3arB1i-2CjLf87A0kaZZRWkLNkqYcS-uwr2Ci0l21FqfVVyYvo2QZYn8TE_vxi3Z7LhsMuPJVdEY0Te_24fn8A6C7w4tbk8tAwxMb383370"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="bg-surface-container-lowest dark:bg-surface-container-low w-sidebar-width h-screen fixed left-0 top-0 shadow-sm shadow-[0px_4px_12px_rgba(0,0,0,0.05)] flex flex-col h-full py-container-padding z-50">
+<div class="px-container-padding mb-stack-lg flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" data-icon="volunteer_activism">volunteer_activism</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary dark:text-inverse-primary font-bold">VolunteerHub</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Admin Portal</p>
+</div>
+</div>
+<ul class="flex-1 flex flex-col gap-1 px-stack-sm overflow-y-auto">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-r-full text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-r-full text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                    Volunteers
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-r-full text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+                    Events
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-r-full text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="how_to_reg">how_to_reg</span>
+                    Attendance
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-r-full text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+                    Reports
+                </a>
+</li>
+<li>
+<!-- ACTIVE STATE -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-r-full text-primary dark:text-primary-fixed-dim border-l-4 border-primary font-bold bg-surface-container-low dark:bg-surface-container-high hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="forum" style="font-variation-settings: 'FILL' 1;">forum</span>
+                    Messaging
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-r-full text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                    Settings
+                </a>
+</li>
+</ul>
+<div class="px-container-padding mt-auto">
+<button class="w-full bg-primary hover:bg-primary/90 text-on-primary font-title-sm text-title-sm py-3 px-4 rounded-full flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+                Create Event
+            </button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="ml-sidebar-width pt-16 h-screen flex bg-background">
+<!-- Inner Sidebar: Messaging Nav -->
+<aside class="w-[280px] bg-surface border-r border-outline-variant flex flex-col h-full flex-shrink-0">
+<div class="p-container-padding">
+<button class="w-full bg-primary-container text-on-primary-container hover:bg-primary-container/90 font-title-sm text-title-sm py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-[0px_4px_12px_rgba(0,0,0,0.05)]">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit_square">edit_square</span>
+                    Compose Message
+                </button>
+</div>
+<nav class="flex-1 overflow-y-auto px-stack-sm pb-container-padding">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center justify-between px-4 py-2.5 rounded-lg bg-surface-container-high text-on-surface font-title-sm text-title-sm" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="inbox">inbox</span>
+                                Inbox
+                            </div>
+<span class="bg-primary text-on-primary font-label-caps text-label-caps px-2 py-0.5 rounded-full">12</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+                            Sent
+                        </a>
+</li>
+<li>
+<a class="flex items-center justify-between px-4 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors font-body-sm text-body-sm" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined" data-icon="drafts">drafts</span>
+                                Drafts
+                            </div>
+<span class="text-on-surface-variant/70 font-label-caps text-label-caps">3</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined" data-icon="bookmarks">bookmarks</span>
+                            Templates
+                        </a>
+</li>
+</ul>
+<h3 class="font-label-caps text-label-caps text-outline mt-8 mb-3 px-4 uppercase tracking-wider">Event Groups</h3>
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors font-body-sm text-body-sm" href="#">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+                            Summer Gala 2024
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors font-body-sm text-body-sm" href="#">
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span>
+                            Park Cleanup Crew
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors font-body-sm text-body-sm" href="#">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+                            Mentorship Program
+                        </a>
+</li>
+</ul>
+</nav>
+</aside>
+<!-- Message List (Middle Column) -->
+<div class="w-[350px] bg-surface-lowest border-r border-outline-variant flex flex-col h-full flex-shrink-0">
+<div class="p-4 border-b border-outline-variant flex items-center justify-between">
+<h2 class="font-title-sm text-title-sm text-on-surface">Inbox</h2>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto">
+<!-- Message Item: Active -->
+<div class="p-4 border-b border-outline-variant bg-surface-container-low cursor-pointer relative">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-r-full"></div>
+<div class="flex justify-between items-start mb-1">
+<span class="font-title-sm text-title-sm text-on-surface font-semibold">Sarah Jenkins</span>
+<span class="font-label-caps text-label-caps text-primary">10:42 AM</span>
+</div>
+<h4 class="font-body-sm text-body-sm text-on-surface font-medium mb-1 truncate">Question about shift timing</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Hi there, I noticed my shift for the Gala starts at 4 PM, but the orientation email said 3 PM. Could you clarify?</p>
+</div>
+<!-- Message Item -->
+<div class="p-4 border-b border-outline-variant hover:bg-surface-bright cursor-pointer transition-colors">
+<div class="flex justify-between items-start mb-1">
+<span class="font-title-sm text-title-sm text-on-surface">Park Cleanup Team</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Yesterday</span>
+</div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary-container" data-icon="campaign">campaign</span>
+<h4 class="font-body-sm text-body-sm text-on-surface font-medium truncate">Weather Update for Saturday</h4>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Please be advised that light rain is expected this Saturday. We will still proceed but please dress accordingly...</p>
+</div>
+<!-- Message Item -->
+<div class="p-4 border-b border-outline-variant hover:bg-surface-bright cursor-pointer transition-colors opacity-70">
+<div class="flex justify-between items-start mb-1">
+<span class="font-title-sm text-title-sm text-on-surface">Michael Chang</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Oct 12</span>
+</div>
+<h4 class="font-body-sm text-body-sm text-on-surface font-medium mb-1 truncate">New Volunteer Application</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">I've submitted my background check documents via the secure portal. Let me know if you need anything else.</p>
+</div>
+</div>
+</div>
+<!-- Central View (Rich Text/Composer Canvas) -->
+<section class="flex-1 bg-surface-lowest flex flex-col h-full">
+<!-- Composer Header -->
+<div class="px-8 py-6 border-b border-outline-variant flex-shrink-0 bg-surface">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline-md text-headline-md text-on-surface">New Announcement</h2>
+<div class="flex gap-3">
+<button class="px-4 py-2 border border-outline hover:bg-surface-container-low text-on-surface font-body-sm text-body-sm rounded-lg transition-colors">
+                            Save Draft
+                        </button>
+<button class="px-6 py-2 bg-primary hover:bg-primary/90 text-on-primary font-body-sm text-body-sm font-medium rounded-lg flex items-center gap-2 shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="send">send</span>
+                            Send Now
+                        </button>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<label class="w-16 font-body-sm text-body-sm text-on-surface-variant font-medium">To:</label>
+<div class="flex-1 flex gap-2">
+<button class="px-4 py-1.5 rounded-full border border-primary text-primary bg-primary-fixed-dim/20 font-body-sm text-body-sm flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="groups">groups</span>
+                                Send to All Active
+                            </button>
+<button class="px-4 py-1.5 rounded-full border border-outline text-on-surface-variant hover:bg-surface-container-low font-body-sm text-body-sm flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="group_add">group_add</span>
+                                By Event Group
+                            </button>
+<button class="px-4 py-1.5 rounded-full border border-outline text-on-surface-variant hover:bg-surface-container-low font-body-sm text-body-sm flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="person_add">person_add</span>
+                                Direct Message
+                            </button>
+</div>
+</div>
+<div class="flex items-center gap-4 border-b border-outline-variant pb-2">
+<label class="w-16 font-body-sm text-body-sm text-on-surface-variant font-medium">Subject:</label>
+<input class="flex-1 bg-transparent border-none focus:ring-0 font-title-sm text-title-sm text-on-surface placeholder:text-on-surface-variant/50 p-0" placeholder="Enter subject line..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Rich Text Editor Area -->
+<div class="flex-1 flex flex-col bg-surface m-6 rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant overflow-hidden">
+<!-- Toolbar -->
+<div class="bg-surface-container-lowest border-b border-outline-variant p-2 flex items-center gap-1 flex-wrap">
+<button class="p-2 rounded hover:bg-surface-container-low text-on-surface-variant transition-colors" title="Bold">
+<span class="material-symbols-outlined text-[20px]" data-icon="format_bold">format_bold</span>
+</button>
+<button class="p-2 rounded hover:bg-surface-container-low text-on-surface-variant transition-colors" title="Italic">
+<span class="material-symbols-outlined text-[20px]" data-icon="format_italic">format_italic</span>
+</button>
+<button class="p-2 rounded hover:bg-surface-container-low text-on-surface-variant transition-colors" title="Underline">
+<span class="material-symbols-outlined text-[20px]" data-icon="format_underlined">format_underlined</span>
+</button>
+<div class="w-px h-6 bg-outline-variant mx-2"></div>
+<button class="p-2 rounded hover:bg-surface-container-low text-on-surface-variant transition-colors" title="Align Left">
+<span class="material-symbols-outlined text-[20px]" data-icon="format_align_left">format_align_left</span>
+</button>
+<button class="p-2 rounded hover:bg-surface-container-low text-on-surface-variant transition-colors" title="Align Center">
+<span class="material-symbols-outlined text-[20px]" data-icon="format_align_center">format_align_center</span>
+</button>
+<div class="w-px h-6 bg-outline-variant mx-2"></div>
+<button class="p-2 rounded hover:bg-surface-container-low text-on-surface-variant transition-colors" title="Bullet List">
+<span class="material-symbols-outlined text-[20px]" data-icon="format_list_bulleted">format_list_bulleted</span>
+</button>
+<button class="p-2 rounded hover:bg-surface-container-low text-on-surface-variant transition-colors" title="Numbered List">
+<span class="material-symbols-outlined text-[20px]" data-icon="format_list_numbered">format_list_numbered</span>
+</button>
+<div class="w-px h-6 bg-outline-variant mx-2"></div>
+<button class="p-2 rounded hover:bg-surface-container-low text-on-surface-variant transition-colors" title="Insert Link">
+<span class="material-symbols-outlined text-[20px]" data-icon="link">link</span>
+</button>
+<button class="p-2 rounded hover:bg-surface-container-low text-on-surface-variant transition-colors" title="Insert Image">
+<span class="material-symbols-outlined text-[20px]" data-icon="image">image</span>
+</button>
+</div>
+<!-- Editor Canvas -->
+<div class="flex-1 p-6 overflow-y-auto">
+<textarea class="w-full h-full resize-none bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant/40" placeholder="Type your message here..."></textarea>
+</div>
+</div>
+</section>
+</main>
+</body></html>

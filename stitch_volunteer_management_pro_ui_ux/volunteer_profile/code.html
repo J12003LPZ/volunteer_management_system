@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Volunteer Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#996100",
+                    "inverse-primary": "#b4c5ff",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#0053db",
+                    "primary": "#004ac6",
+                    "surface-bright": "#f8f9ff",
+                    "outline": "#737686",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#ffddb8",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-secondary-fixed-variant": "#005236",
+                    "primary-fixed": "#dbe1ff",
+                    "surface-container-low": "#eff4ff",
+                    "surface-container-high": "#dce9ff",
+                    "tertiary": "#784b00",
+                    "on-surface": "#0b1c30",
+                    "surface-dim": "#cbdbf5",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-tertiary-container": "#ffeedd",
+                    "on-tertiary-fixed": "#2a1700",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-container": "#eeefff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "primary-container": "#2563eb",
+                    "inverse-surface": "#213145",
+                    "on-secondary-fixed": "#002113",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "on-background": "#0b1c30",
+                    "secondary": "#006c49",
+                    "surface-container": "#e5eeff",
+                    "secondary-fixed": "#6ffbbe",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-secondary-container": "#00714d",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#00174b",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "background": "#f8f9ff",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "secondary-container": "#6cf8bb",
+                    "on-primary": "#ffffff",
+                    "on-surface-variant": "#434655",
+                    "outline-variant": "#c3c6d7",
+                    "surface": "#f8f9ff",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#d3e4fe"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "stack-md": "16px",
+                    "sidebar-width": "260px",
+                    "stack-sm": "8px",
+                    "container-padding": "24px",
+                    "gutter": "16px",
+                    "stack-lg": "32px"
+            },
+            "fontFamily": {
+                    "body-sm": [
+                            "Inter"
+                    ],
+                    "label-caps": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Inter"
+                    ],
+                    "display-lg": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "title-sm": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg": [
+                            "36px",
+                            {
+                                    "lineHeight": "44px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "title-sm": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<nav class="bg-surface-container-lowest dark:bg-surface-container-low w-sidebar-width h-screen fixed left-0 top-0 shadow-sm flex flex-col h-full py-container-padding z-50">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]">volunteer_activism</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary dark:text-inverse-primary tracking-tight">VolunteerHub</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Admin Portal</p>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary dark:text-primary-fixed-dim border-l-4 border-primary font-bold bg-surface-container-low dark:bg-surface-container-high active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Volunteers</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">event</span>
+<span>Events</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span>Attendance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span>Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span>Messaging</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</div>
+<div class="px-4 mt-auto">
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-semibold shadow-[0px_4px_12px_rgba(0,0,0,0.05)] hover:bg-surface-tint transition-colors">
+                Create Event
+            </button>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface-dim h-16 fixed top-0 right-0 z-40 border-b border-outline-variant dark:border-outline flex justify-between items-center px-container-padding ml-sidebar-width w-[calc(100%-260px)]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm font-body-sm text-on-surface placeholder-outline w-64" placeholder="Search..." type="text"/>
+</div>
+<div class="font-title-sm text-title-sm font-semibold text-on-surface dark:text-inverse-on-surface">
+            Volunteer Management System
+        </div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-full transition-all cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-full transition-all cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant cursor-pointer">
+<img alt="Admin User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of an administrative user in a clean, brightly lit corporate environment. The image exudes a sense of trust and approachability, aligning with a modern corporate aesthetic. Subtle cool tones dominate the background, enhancing the calm, organized vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLhTZ9YmYdxj08lwDQ9yMJRiapkglOInrbL5Px3xk5AyK35kjPdnaXTvqdf14B4dO6cfpygrfqKQx4B_N8rNFXus4NhR-y8OnYm2B3Rkop1sQGwoUfmaEe7l2b9oMSUjob2SdM28KzNdxQJMYBPtDv3reO545ZzRevhMDgxZ_R_vT0sggy-WReYSyrLye_UyUoxXiaGqHB4m-132iKjZJUgOZcYGnAJZjB-FUa_9iOTXB87VnJ89S8yfJibNpU4u04V03gHqEBWE47"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-sidebar-width mt-16 p-container-padding flex-1 overflow-y-auto bg-background h-[calc(100vh-64px)] w-[calc(100%-260px)]">
+<div class="max-w-[1440px] mx-auto">
+<!-- Breadcrumb & Header Actions -->
+<div class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-2 text-on-surface-variant text-body-sm font-body-sm">
+<a class="hover:text-primary transition-colors" href="#">Volunteers</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Sarah Jenkins</span>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 rounded-lg border border-outline text-on-surface font-body-sm flex items-center gap-2 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        Download Record
+                    </button>
+<button class="px-4 py-2 rounded-lg border border-outline text-on-surface font-body-sm flex items-center gap-2 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+                        Send Message
+                    </button>
+<button class="px-4 py-2 rounded-lg bg-primary text-on-primary font-body-sm flex items-center gap-2 hover:bg-surface-tint transition-colors shadow-[0px_4px_12px_rgba(0,0,0,0.05)]">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+                        Edit Profile
+                    </button>
+</div>
+</div>
+<!-- Profile Hero Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] p-8 mb-6 flex items-start gap-8 border border-outline-variant/30">
+<div class="relative">
+<img alt="Sarah Jenkins" class="w-28 h-28 rounded-full object-cover border-4 border-surface" data-alt="A brightly lit, professional portrait of a young female volunteer. She has a warm, welcoming smile and is dressed in casual, neat clothing suitable for community work. The background is softly blurred, emphasizing her face, with lighting that conveys approachability and positive energy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGgQ1LC25wJyYd_YZmi3M6jcsCYhoDOWz1cGbJD8UeIJjRXk3GVMyGgYZ9sXvOCuP57_V65gs9k4KgTmJmNkPRaPQQwH_qaiStAjFnCzoQApVn0h_m9REhSdYOZgCYFWZtIfssQMt07xtjOGpiAXdFQ_ifzzNuxRhb2A-4PISFS_zIkpMsUOdW_47G6mCf3qYJRVc4vB_2V2WUMkYVY6iM4fl7IunkfNIFCUkaEt40vMW2FVWdDYE-aTWGVceLWpGBBpsx7Sxde6Bl"/>
+<div class="absolute -bottom-2 -right-2 bg-secondary-container text-on-secondary-container text-label-caps font-label-caps px-3 py-1 rounded-full border-2 border-surface flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                        Active
+                    </div>
+</div>
+<div class="flex-1">
+<h2 class="font-display-lg text-display-lg text-on-surface mb-2">Sarah Jenkins</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Dedicated community organizer and event logistics specialist. Volunteering since March 2021.</p>
+<div class="flex gap-4">
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+                            sarah.jenkins@example.com
+                        </div>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm">
+<span class="material-symbols-outlined text-[18px]">phone</span>
+                            (555) 123-4567
+                        </div>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+                            Portland, OR
+                        </div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-4 w-48 text-center border border-outline-variant/30">
+<div class="font-display-lg text-display-lg text-primary mb-1">145</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Total Hours</div>
+</div>
+</div>
+<!-- Grid Layout for Content -->
+<div class="grid grid-cols-3 gap-6">
+<!-- Left Column (Details) -->
+<div class="col-span-2 space-y-6">
+<!-- Professional Info (Bento Card) -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] p-6 border border-outline-variant/30">
+<h3 class="font-title-sm text-title-sm text-on-surface mb-4 flex items-center gap-2 border-b border-outline-variant/30 pb-3">
+<span class="material-symbols-outlined text-primary">psychology</span>
+                            Skills &amp; Capabilities
+                        </h3>
+<div class="grid grid-cols-2 gap-6">
+<div>
+<h4 class="font-label-caps text-label-caps text-on-surface-variant mb-3 uppercase">Certified Skills</h4>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-primary-fixed text-on-primary-fixed-variant rounded-full font-body-sm text-body-sm flex items-center gap-1 border border-primary-fixed-dim">
+<span class="material-symbols-outlined text-[14px]">medical_services</span> First Aid
+                                    </span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface rounded-full font-body-sm text-body-sm flex items-center gap-1 border border-outline-variant">
+<span class="material-symbols-outlined text-[14px]">construction</span> Event Setup
+                                    </span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface rounded-full font-body-sm text-body-sm flex items-center gap-1 border border-outline-variant">
+<span class="material-symbols-outlined text-[14px]">dataset</span> Data Entry
+                                    </span>
+</div>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-on-surface-variant mb-3 uppercase">Languages</h4>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container text-on-surface rounded-full font-body-sm text-body-sm border border-outline-variant">English (Native)</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface rounded-full font-body-sm text-body-sm border border-outline-variant">Spanish (Fluent)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Activity History -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] p-0 border border-outline-variant/30 overflow-hidden">
+<div class="p-6 border-b border-outline-variant/30 flex justify-between items-center bg-surface-bright">
+<h3 class="font-title-sm text-title-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">history</span>
+                                Recent Activity
+                            </h3>
+<button class="text-primary font-body-sm hover:underline">View All</button>
+</div>
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead class="bg-surface-container-lowest text-on-surface-variant border-b border-outline-variant/50">
+<tr>
+<th class="p-4 font-semibold">Event / Shift</th>
+<th class="p-4 font-semibold">Date</th>
+<th class="p-4 font-semibold">Hours</th>
+<th class="p-4 font-semibold">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<tr class="hover:bg-surface-container-lowest/50 transition-colors">
+<td class="p-4">
+<div class="font-semibold text-on-surface">Annual Food Drive</div>
+<div class="text-on-surface-variant text-xs mt-1">Sorting &amp; Packing</div>
+</td>
+<td class="p-4 text-on-surface-variant">Oct 12, 2023</td>
+<td class="p-4 text-on-surface">4.5h</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded text-xs font-semibold">Attended</span>
+</td>
+</tr>
+<tr class="bg-surface-bright/50 hover:bg-surface-container-lowest/50 transition-colors">
+<td class="p-4">
+<div class="font-semibold text-on-surface">Community Garden Prep</div>
+<div class="text-on-surface-variant text-xs mt-1">Site Coordinator</div>
+</td>
+<td class="p-4 text-on-surface-variant">Sep 28, 2023</td>
+<td class="p-4 text-on-surface">6.0h</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded text-xs font-semibold">Attended</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest/50 transition-colors">
+<td class="p-4">
+<div class="font-semibold text-on-surface">Tech Literacy Workshop</div>
+<div class="text-on-surface-variant text-xs mt-1">Assistant Trainer</div>
+</td>
+<td class="p-4 text-on-surface-variant">Sep 15, 2023</td>
+<td class="p-4 text-on-surface">2.0h</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-error-container text-on-error-container rounded text-xs font-semibold">No Show</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Right Column (Sidebar-style info) -->
+<div class="space-y-6">
+<!-- Availability -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] p-6 border border-outline-variant/30">
+<h3 class="font-title-sm text-title-sm text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+                            Availability
+                        </h3>
+<div class="space-y-3">
+<div class="flex justify-between items-center p-2 rounded bg-surface-container-low border border-outline-variant/20">
+<span class="font-body-sm text-on-surface font-semibold">Tuesday</span>
+<span class="font-body-sm text-on-surface-variant">Morning (8a - 12p)</span>
+</div>
+<div class="flex justify-between items-center p-2 rounded bg-surface-container-low border border-outline-variant/20">
+<span class="font-body-sm text-on-surface font-semibold">Thursday</span>
+<span class="font-body-sm text-on-surface-variant">Evening (5p - 9p)</span>
+</div>
+<div class="flex justify-between items-center p-2 rounded bg-surface-container-low border border-outline-variant/20">
+<span class="font-body-sm text-on-surface font-semibold">Saturday</span>
+<span class="font-body-sm text-on-surface-variant">Flexible</span>
+</div>
+</div>
+</div>
+<!-- Personal Info -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] p-6 border border-outline-variant/30">
+<h3 class="font-title-sm text-title-sm text-on-surface mb-4">Personal Details</h3>
+<div class="space-y-4 font-body-sm">
+<div>
+<div class="text-label-caps font-label-caps text-on-surface-variant uppercase mb-1">Date of Birth</div>
+<div class="text-on-surface">October 14, 1992</div>
+</div>
+<div>
+<div class="text-label-caps font-label-caps text-on-surface-variant uppercase mb-1">Address</div>
+<div class="text-on-surface">1234 Rosewood Lane<br/>Apt 4B<br/>Portland, OR 97204</div>
+</div>
+<div class="pt-4 border-t border-outline-variant/30">
+<div class="text-label-caps font-label-caps text-error uppercase mb-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">emergency</span> Emergency Contact
+                                </div>
+<div class="text-on-surface font-semibold">Michael Jenkins (Brother)</div>
+<div class="text-on-surface-variant">(555) 987-6543</div>
+</div>
+</div>
+</div>
+<!-- Admin Notes -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] p-6 border border-outline-variant/30">
+<h3 class="font-title-sm text-title-sm text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container">edit_note</span>
+                            Admin Notes
+                        </h3>
+<textarea class="w-full bg-surface-bright border border-outline-variant rounded-lg p-3 text-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary h-32 resize-none" placeholder="Add a private note about this volunteer..."></textarea>
+<div class="mt-3 flex justify-end">
+<button class="px-4 py-2 bg-surface-container text-on-surface rounded-lg font-body-sm hover:bg-surface-container-high transition-colors border border-outline-variant">Save Note</button>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 mb-12">
+<p class="text-center font-body-sm text-on-surface-variant">Last activity recorded on Oct 14, 2023</p>
+</div>
+</div>
+</main>
+</body></html>

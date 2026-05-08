@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Events - Volunteer Management System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#996100",
+                        "inverse-primary": "#b4c5ff",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#0053db",
+                        "primary": "#004ac6",
+                        "surface-bright": "#f8f9ff",
+                        "outline": "#737686",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-secondary-fixed-variant": "#005236",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-high": "#dce9ff",
+                        "tertiary": "#784b00",
+                        "on-surface": "#0b1c30",
+                        "surface-dim": "#cbdbf5",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-tertiary-container": "#ffeedd",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#eeefff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "primary-container": "#2563eb",
+                        "inverse-surface": "#213145",
+                        "on-secondary-fixed": "#002113",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-background": "#0b1c30",
+                        "secondary": "#006c49",
+                        "surface-container": "#e5eeff",
+                        "secondary-fixed": "#6ffbbe",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-secondary-container": "#00714d",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#00174b",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "background": "#f8f9ff",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "secondary-container": "#6cf8bb",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#434655",
+                        "outline-variant": "#c3c6d7",
+                        "surface": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#d3e4fe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "stack-md": "16px",
+                        "sidebar-width": "260px",
+                        "stack-sm": "8px",
+                        "container-padding": "24px",
+                        "gutter": "16px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "title-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "title-sm": ["18px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- SideNavBar -->
+<nav class="w-sidebar-width h-screen fixed left-0 top-0 bg-surface-container-lowest dark:bg-surface-container-low shadow-sm z-50 flex flex-col h-full py-container-padding shadow-[0px_4px_12px_rgba(0,0,0,0.05)]">
+<div class="px-container-padding mb-stack-lg flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">volunteer_activism</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-primary dark:text-inverse-primary">VolunteerHub</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Admin Portal</div>
+</div>
+</div>
+<div class="px-container-padding mb-stack-md">
+<button class="w-full bg-primary text-on-primary hover:bg-primary-fixed-variant transition-colors duration-200 py-2 rounded-lg font-title-sm text-title-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add</span> Create Event
+            </button>
+</div>
+<ul class="flex flex-col flex-1 px-3 gap-1">
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 font-body-md text-body-md active:scale-95 transition-transform" href="#"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 font-body-md text-body-md active:scale-95 transition-transform" href="#"><span class="material-symbols-outlined">group</span> Volunteers</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary dark:text-primary-fixed-dim border-l-4 border-primary font-bold bg-surface-container-low dark:bg-surface-container-high font-body-md text-body-md active:scale-95 transition-transform" href="#"><span class="material-symbols-outlined">event</span> Events</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 font-body-md text-body-md active:scale-95 transition-transform" href="#"><span class="material-symbols-outlined">how_to_reg</span> Attendance</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 font-body-md text-body-md active:scale-95 transition-transform" href="#"><span class="material-symbols-outlined">assessment</span> Reports</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 font-body-md text-body-md active:scale-95 transition-transform" href="#"><span class="material-symbols-outlined">forum</span> Messaging</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 font-body-md text-body-md active:scale-95 transition-transform" href="#"><span class="material-symbols-outlined">settings</span> Settings</a></li>
+</ul>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 ml-sidebar-width flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="h-16 fixed top-0 right-0 z-40 bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline flex justify-between items-center px-container-padding ml-sidebar-width w-[calc(100%-260px)]">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 rounded-full border border-outline-variant bg-surface-container-lowest focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-body-sm text-body-sm" placeholder="Search events..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="font-title-sm text-title-sm font-semibold text-on-surface dark:text-inverse-on-surface hidden lg:block">Volunteer Management System</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-full transition-all cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-full transition-all cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container overflow-hidden border-2 border-surface cursor-pointer">
+<img alt="Admin User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of an administrative user, friendly expression, well-lit, shallow depth of field, modern corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc8ZBqoUcV6Lk7WB95TygZtOfc_4UZrhQIX6b93-xL74yr5qOj_vhIVlUuTlt2XOw_17dEP4eFNwmc_bugFWdjxCscTK2lC2GEffu1yhPBtIBndZ5jcxf8Q839UWmP3ADO9a-OhzuD-O3wELQhSHo1nbBKp8teP6-fCqumTdAdWYIbstk1nX66k-vcqAd6zES-SMj8VYdfDnr2ux-P14P5H9Vz2qn8T9-gjaMYhXqth21ivu45KqDLocX1KZs6OMPfc-uBmJcqVuu8"/>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 pt-24 px-container-padding pb-container-padding max-w-[1440px] mx-auto w-full">
+<!-- Page Header & Actions -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-stack-lg gap-4">
+<div>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-1">Events</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage and track all upcoming and past events.</p>
+</div>
+<div class="flex items-center gap-3 w-full md:w-auto">
+<!-- View Toggle -->
+<div class="flex bg-surface-container-low rounded-lg p-1 border border-outline-variant">
+<button class="px-4 py-1.5 rounded bg-surface-container-lowest shadow-sm text-primary font-title-sm text-title-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">grid_view</span> Card
+                        </button>
+<button class="px-4 py-1.5 rounded text-on-surface-variant hover:text-on-surface font-title-sm text-title-sm flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[20px]">table_rows</span> Table
+                        </button>
+</div>
+</div>
+</div>
+<!-- Filters Area -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant mb-stack-lg flex flex-wrap gap-4 items-end">
+<div class="flex-1 min-w-[200px]">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2">Date Range</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">calendar_month</span>
+<input class="w-full pl-10 pr-4 py-2 rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary font-body-sm text-body-sm bg-transparent" placeholder="This Month" type="text"/>
+</div>
+</div>
+<div class="flex-1 min-w-[200px]">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2">Status</label>
+<select class="w-full px-4 py-2 rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary font-body-sm text-body-sm bg-transparent appearance-none">
+<option>All Statuses</option>
+<option>Open</option>
+<option>Full</option>
+<option>Completed</option>
+</select>
+</div>
+<div class="flex-1 min-w-[200px]">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2">Location</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">location_on</span>
+<input class="w-full pl-10 pr-4 py-2 rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary font-body-sm text-body-sm bg-transparent" placeholder="Any Location" type="text"/>
+</div>
+</div>
+<div>
+<button class="px-4 py-2 rounded-lg text-primary font-title-sm text-title-sm hover:bg-primary-container hover:text-on-primary-container transition-colors border border-primary">
+                        Apply Filters
+                    </button>
+</div>
+</div>
+<!-- Bento Grid - Event Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Event Card 1 (Open) -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant overflow-hidden flex flex-col group hover:shadow-[0px_12px_24px_rgba(0,0,0,0.08)] transition-all duration-300">
+<div class="h-32 bg-surface-variant relative overflow-hidden">
+<img alt="Team meeting" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" data-alt="A group of diverse volunteers in bright clothing working together in a community garden, sunny day, vibrant green plants, cheerful atmosphere, modern documentary style photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSzN9ximY8AGWZt9UlRpi6H_tdWiko8qvLN8YiK0slPKwVSrnQZPut5qi0aDbvKcktljPbyDmOYB9GBDd_OQ8-8j6vOfR1MyGOVywZIyy7-X0d_RXFRskFLGYLdf0bG18IM1jSFp-wlvwA0QGF2xv9ZmLwNVaaIOSQuADK4E_uPcu5zdFe3ENMQ5TsiWByX6vdTyTOybJQoakDWHrlI7aCz5dWcDb8pDqfD5WbS0ViUVXR_iIPfH72EUVan_A56B7SiJGVshTgnTfL"/>
+<div class="absolute top-4 right-4 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-caps text-label-caps flex items-center gap-1 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> Open
+                        </div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<h3 class="font-headline-md text-[20px] leading-[28px] text-on-surface mb-2">Annual Community Park Cleanup</h3>
+<div class="space-y-2 mb-6 mt-2">
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span>Sat, Oct 14, 2023</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span>9:00 AM - 1:00 PM</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span>Riverside Park, North Pavilion</span>
+</div>
+</div>
+<div class="mt-auto">
+<div class="flex justify-between items-end mb-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Staffing Progress</span>
+<span class="font-title-sm text-title-sm text-on-surface">8/12 <span class="font-body-sm text-body-sm font-normal text-on-surface-variant">volunteers</span></span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2 overflow-hidden">
+<div class="bg-primary h-2 rounded-full" style="width: 66%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Event Card 2 (Full) -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant overflow-hidden flex flex-col group hover:shadow-[0px_12px_24px_rgba(0,0,0,0.08)] transition-all duration-300">
+<div class="h-32 bg-surface-variant relative overflow-hidden">
+<img alt="Food bank sorting" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" data-alt="Volunteers organizing boxes of non-perishable food in a bright, clean warehouse environment, warm lighting, focused activity, conveying efficiency and teamwork, modern corporate non-profit style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJXBFYKIvctIqfJpvBdCBfTvoE6bQHrqB6dZIwXXbKdgjUylulEy2Hese8K1LmubXl2lvrq6ifZlE-2QQ-37vHwXV4PfpQC1q2-rQSRbaXuixVzVo3_0USMmdAHM_6ufzgyt9HcHBDZ7r5wAT1Idg9Y24PAKHziVQ2n5DxWvp4pKe1WDCw1zieokfg0mrfI_i6XoTFsTZdN_wUuJ0RWYeEXFqq3AaSM4ltDe8AvOnhMs8ZGBNCIBTLmmizABidxEgNUdmKoNdEdabp"/>
+<div class="absolute top-4 right-4 bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full font-label-caps text-label-caps flex items-center gap-1 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span> Full
+                        </div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<h3 class="font-headline-md text-[20px] leading-[28px] text-on-surface mb-2">Thanksgiving Food Drive Sorting</h3>
+<div class="space-y-2 mb-6 mt-2">
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span>Mon, Nov 20, 2023</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span>2:00 PM - 6:00 PM</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span>Main Distribution Center</span>
+</div>
+</div>
+<div class="mt-auto">
+<div class="flex justify-between items-end mb-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Staffing Progress</span>
+<span class="font-title-sm text-title-sm text-on-surface">25/25 <span class="font-body-sm text-body-sm font-normal text-on-surface-variant">volunteers</span></span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2 overflow-hidden">
+<div class="bg-tertiary h-2 rounded-full" style="width: 100%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Event Card 3 (Completed) -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant overflow-hidden flex flex-col group hover:shadow-[0px_12px_24px_rgba(0,0,0,0.08)] transition-all duration-300 opacity-80 grayscale-[20%]">
+<div class="h-32 bg-surface-variant relative overflow-hidden">
+<img alt="Marathon water station" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500" data-alt="Volunteers handing out water cups at a sunny marathon event, runners passing by blurred in the background, energetic and supportive atmosphere, bright outdoorsy lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi412gcQbSwUTLq0NBxmzcjFN7Ju2xEANB74LKi-QmQjsmNo4DMNL4dkyQ6ZyQmaW8i0HSJCeiWDvZl9QWk92Hh3WWOG5Z25odYoP7JPQzYs2hAHShwvqf6G-Vn_rd0MTUEScJ_IluL6xtsY0X2xmERZL9f-Vm6LDl9r1WIwoQTc7e43XfIgfRixrGLmYmnTnXLOOIRPEUynQNjq_K4SZCZbXiRoFSFwUMsCHx8Vzh0BImb545IvKFX1xJ50JAUEVG5FauJDzlBfZj"/>
+<div class="absolute top-4 right-4 bg-surface-container-high text-on-surface px-3 py-1 rounded-full font-label-caps text-label-caps flex items-center gap-1 shadow-sm border border-outline-variant">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Completed
+                        </div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<h3 class="font-headline-md text-[20px] leading-[28px] text-on-surface mb-2 text-on-surface-variant">City Marathon Water Station</h3>
+<div class="space-y-2 mb-6 mt-2">
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span>Sun, Sep 03, 2023</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span>6:00 AM - 12:00 PM</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span>Mile Marker 12, 5th Ave</span>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant">
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Hours Logged</span>
+<span class="font-title-sm text-title-sm text-on-surface">120 hrs total</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

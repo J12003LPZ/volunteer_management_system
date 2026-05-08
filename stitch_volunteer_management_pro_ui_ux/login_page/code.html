@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login - Volunteer Management System</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#996100",
+                        "inverse-primary": "#b4c5ff",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#0053db",
+                        "primary": "#004ac6",
+                        "surface-bright": "#f8f9ff",
+                        "outline": "#737686",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-secondary-fixed-variant": "#005236",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-high": "#dce9ff",
+                        "tertiary": "#784b00",
+                        "on-surface": "#0b1c30",
+                        "surface-dim": "#cbdbf5",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-tertiary-container": "#ffeedd",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#eeefff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "primary-container": "#2563eb",
+                        "inverse-surface": "#213145",
+                        "on-secondary-fixed": "#002113",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-background": "#0b1c30",
+                        "secondary": "#006c49",
+                        "surface-container": "#e5eeff",
+                        "secondary-fixed": "#6ffbbe",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-secondary-container": "#00714d",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#00174b",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "background": "#f8f9ff",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "secondary-container": "#6cf8bb",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#434655",
+                        "outline-variant": "#c3c6d7",
+                        "surface": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#d3e4fe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "stack-md": "16px",
+                        "sidebar-width": "260px",
+                        "stack-sm": "8px",
+                        "container-padding": "24px",
+                        "gutter": "16px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "title-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "title-sm": ["18px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen w-full relative flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-30 object-center" data-alt="A diverse group of cheerful volunteers actively planting flowers in a vibrant community garden bathed in warm, soft sunlight. The scene embodies a spirit of collaboration, growth, and community engagement. The background is slightly blurred to maintain focus on the act of planting, establishing a positive, welcoming mood that aligns perfectly with a modern, professional light-mode interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnd12gnZ6n7nQy57-R6Uqqp4L0W6la-iWSdLJZU9ftqIUN5tQs-fPAiKacgr9wxKTsrEnOZ5CSv9F6fOuV6-yrakOXw4Nko-_JUv412ZNTJbzqV3wPlcetpoE82kactkuxDnWAiRXVdlfkWnYnYYPrqAHoe3H5HEKB93tPuLTEuN0VKvnn473b6eZicjf2iOn_eKlCnUy0mC51uxcrDYBAaACB4s0xS7U0S1joPJWJgdV65rqTX4RFDhvxOH-qAyBg4sEUvTpsucSj"/>
+<div class="absolute inset-0 bg-surface/70 backdrop-blur-[2px] z-10"></div>
+</div>
+<main class="relative z-20 w-full max-w-md px-container-padding">
+<div class="bg-surface-container-lowest rounded-xl p-container-padding shadow-[0px_12px_24px_rgba(0,0,0,0.08)] border border-outline-variant flex flex-col">
+<div class="flex flex-col items-center mb-stack-lg text-center">
+<div class="w-16 h-16 bg-primary-container rounded-full flex items-center justify-center mb-stack-md text-on-primary-container">
+<span class="material-symbols-outlined" data-icon="volunteer_activism" style="font-size: 32px;">volunteer_activism</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-unit">Welcome Back</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Sign in to the Volunteer Management System</p>
+</div>
+<form class="flex flex-col gap-stack-md">
+<div class="flex flex-col gap-stack-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="email">Email Address</label>
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary font-body-md text-body-md text-on-surface transition-colors placeholder:text-outline" id="email" placeholder="admin@organization.org" type="email"/>
+</div>
+<div class="flex flex-col gap-stack-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="password">Password</label>
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary font-body-md text-body-md text-on-surface transition-colors placeholder:text-outline" id="password" placeholder="••••••••" type="password"/>
+</div>
+<div class="flex items-center justify-between mt-unit mb-stack-sm">
+<label class="flex items-center gap-unit cursor-pointer group">
+<input class="w-4 h-4 rounded text-primary border-outline-variant focus:ring-primary bg-surface transition-colors group-hover:border-primary" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Remember Me</span>
+</label>
+<a class="font-body-sm text-body-sm text-primary hover:text-on-primary-fixed-variant font-semibold transition-colors" href="#">Forgot Password?</a>
+</div>
+<button class="w-full py-3 px-4 bg-primary text-on-primary rounded-lg font-title-sm text-title-sm hover:bg-on-primary-fixed-variant focus:ring-4 focus:ring-primary-container transition-colors flex items-center justify-center gap-2 mt-stack-sm" type="submit">
+                    Sign In
+                    <span class="material-symbols-outlined" data-icon="login" style="font-size: 20px;">login</span>
+</button>
+</form>
+</div>
+<div class="mt-stack-lg text-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant drop-shadow-sm">
+                Need access? <a class="text-primary font-semibold hover:underline" href="#">Contact your administrator</a>
+</p>
+</div>
+</main>
+</body></html>

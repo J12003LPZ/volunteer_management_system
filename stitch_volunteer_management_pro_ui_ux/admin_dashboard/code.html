@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VolunteerHub - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#996100",
+                        "inverse-primary": "#b4c5ff",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#0053db",
+                        "primary": "#004ac6",
+                        "surface-bright": "#f8f9ff",
+                        "outline": "#737686",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-secondary-fixed-variant": "#005236",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-high": "#dce9ff",
+                        "tertiary": "#784b00",
+                        "on-surface": "#0b1c30",
+                        "surface-dim": "#cbdbf5",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-tertiary-container": "#ffeedd",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#eeefff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "primary-container": "#2563eb",
+                        "inverse-surface": "#213145",
+                        "on-secondary-fixed": "#002113",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-background": "#0b1c30",
+                        "secondary": "#006c49",
+                        "surface-container": "#e5eeff",
+                        "secondary-fixed": "#6ffbbe",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-secondary-container": "#00714d",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#00174b",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "background": "#f8f9ff",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "secondary-container": "#6cf8bb",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#434655",
+                        "outline-variant": "#c3c6d7",
+                        "surface": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#d3e4fe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "stack-md": "16px",
+                        "sidebar-width": "260px",
+                        "stack-sm": "8px",
+                        "container-padding": "24px",
+                        "gutter": "16px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "title-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "title-sm": ["18px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased overflow-x-hidden min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface-dim h-16 fixed top-0 right-0 z-40 border-b border-outline-variant dark:border-outline flex justify-between items-center px-container-padding ml-sidebar-width w-[calc(100%-260px)]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm text-on-surface w-64 placeholder-outline-variant" placeholder="Search..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4 text-on-surface-variant dark:text-outline-variant">
+<button class="hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-full transition-all p-2 cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-full transition-all p-2 cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+<img alt="Admin User Profile" class="w-10 h-10 rounded-full border border-outline-variant object-cover" data-alt="A close-up portrait of a professional man with a friendly expression, serving as a profile picture placeholder. The image is bright and clear, adhering to a modern corporate style. The lighting is soft and natural, emphasizing approachability and reliability in a professional setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5A8F2fLR81fcR_CHP105qXfutX4qZU_XfXnehcEC65_32tfGfA7W0dxJnk4V4_q6oo2OAEzV_4m7eIWGew9zrmopFXVRWnfG5xA8sMBOh90lAi_614JaN55FEYY8DTiicbaFPy0F-l3hUWCaB8qLe8VgCAbhKLVkuzAXthxh9C7eCFhnm1I-ei8KcO6FWuIoBeNzeBkRs6ewY_Szs-xppLCVRp2boyr0cibnPJsL8DhEoYLzYgjCZLwiCTNs19ASvDMBmAvnaUPV3"/>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="bg-surface-container-lowest dark:bg-surface-container-low w-sidebar-width h-screen fixed left-0 top-0 shadow-[0px_4px_12px_rgba(0,0,0,0.05)] shadow-sm flex flex-col h-full py-container-padding z-50">
+<div class="px-container-padding mb-8">
+<h1 class="font-headline-md text-headline-md text-primary dark:text-inverse-primary">VolunteerHub</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Admin Portal</p>
+</div>
+<div class="flex flex-col gap-2 px-container-padding flex-grow">
+<!-- Active: Dashboard -->
+<a class="flex items-center gap-3 py-3 px-4 rounded-lg text-primary dark:text-primary-fixed-dim border-l-4 border-primary font-bold bg-surface-container-low dark:bg-surface-container-high active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md text-body-md">Volunteers</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">event</span>
+<span class="font-body-md text-body-md">Events</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-body-md text-body-md">Attendance</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-body-md text-body-md">Reports</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-body-md text-body-md">Messaging</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 rounded-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</div>
+<div class="px-container-padding mt-auto">
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-body-md text-body-md font-semibold hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm">
+                Create Event
+            </button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="ml-sidebar-width mt-16 p-container-padding max-w-[1440px] mx-auto">
+<div class="flex justify-between items-center mb-8">
+<h2 class="font-display-lg text-display-lg text-on-surface">Dashboard Overview</h2>
+<div class="flex gap-4">
+<button class="px-4 py-2 bg-surface-container-lowest border border-outline-variant text-primary rounded-lg font-body-sm text-body-sm font-semibold hover:bg-surface-container-low transition-colors">
+                    Add Volunteer
+                </button>
+<button class="px-4 py-2 bg-primary text-on-primary rounded-lg font-body-sm text-body-sm font-semibold hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm">
+                    View Reports
+                </button>
+</div>
+</div>
+<!-- Bento Grid: Stats Summary -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+<!-- Total Volunteers -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-primary bg-surface-container-low p-2 rounded-lg">group</span>
+<span class="font-label-caps text-label-caps text-secondary bg-secondary-container px-2 py-1 rounded-full">+12% this month</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-1">Total Volunteers</p>
+<p class="font-display-lg text-display-lg text-on-surface">1,240</p>
+</div>
+</div>
+<!-- Active Volunteers -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-secondary bg-surface-container-low p-2 rounded-lg">how_to_reg</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant bg-surface-container px-2 py-1 rounded-full">Active Status</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-1">Active Volunteers</p>
+<p class="font-display-lg text-display-lg text-on-surface">850</p>
+</div>
+</div>
+<!-- Total Hours -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-tertiary bg-surface-container-low p-2 rounded-lg">schedule</span>
+<span class="font-label-caps text-label-caps text-secondary bg-secondary-container px-2 py-1 rounded-full">+5% this month</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-1">Total Hours</p>
+<p class="font-display-lg text-display-lg text-on-surface">15,600</p>
+</div>
+</div>
+<!-- Upcoming Events -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-primary bg-surface-container-low p-2 rounded-lg">event</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-1">Upcoming Events</p>
+<p class="font-display-lg text-display-lg text-on-surface">12</p>
+</div>
+</div>
+<!-- Open Shifts -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-error bg-error-container p-2 rounded-lg">assignment_late</span>
+<span class="font-label-caps text-label-caps text-error bg-error-container px-2 py-1 rounded-full">Needs Attention</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-1">Open Shifts</p>
+<p class="font-display-lg text-display-lg text-on-surface">45</p>
+</div>
+</div>
+<!-- Pending Applications -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-tertiary-container bg-surface-container-low p-2 rounded-lg">person_add</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-1">Pending Applications</p>
+<p class="font-display-lg text-display-lg text-on-surface">24</p>
+</div>
+</div>
+</div>
+<!-- Lower Section: Chart & Activity Feed -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Chart Area (Mockup) -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-6 rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-title-sm text-title-sm text-on-surface">Volunteer Hours by Month</h3>
+<button class="text-primary hover:text-primary-container font-body-sm text-body-sm flex items-center gap-1">
+                        View Details <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="h-64 w-full bg-surface-container-low rounded-lg border border-outline-variant flex items-end justify-between p-4 relative overflow-hidden">
+<!-- Faux Bar Chart -->
+<div class="w-1/12 bg-primary-fixed-dim rounded-t-sm h-1/3 hover:bg-primary transition-colors relative group"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs opacity-0 group-hover:opacity-100 transition-opacity">Jan</span></div>
+<div class="w-1/12 bg-primary-fixed-dim rounded-t-sm h-1/2 hover:bg-primary transition-colors relative group"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs opacity-0 group-hover:opacity-100 transition-opacity">Feb</span></div>
+<div class="w-1/12 bg-primary-fixed-dim rounded-t-sm h-2/5 hover:bg-primary transition-colors relative group"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs opacity-0 group-hover:opacity-100 transition-opacity">Mar</span></div>
+<div class="w-1/12 bg-primary-fixed-dim rounded-t-sm h-3/5 hover:bg-primary transition-colors relative group"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs opacity-0 group-hover:opacity-100 transition-opacity">Apr</span></div>
+<div class="w-1/12 bg-primary rounded-t-sm h-4/5 relative group shadow-sm"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold">May</span></div>
+<div class="w-1/12 bg-primary-fixed-dim rounded-t-sm h-1/2 hover:bg-primary transition-colors relative group"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs opacity-0 group-hover:opacity-100 transition-opacity">Jun</span></div>
+</div>
+</div>
+<!-- Activity Feed -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant flex flex-col h-full">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-title-sm text-title-sm text-on-surface">Recent Activity</h3>
+</div>
+<div class="flex flex-col gap-4 flex-grow overflow-y-auto">
+<!-- Activity Item 1 -->
+<div class="flex gap-3 items-start pb-4 border-b border-outline-variant last:border-0 last:pb-0">
+<div class="bg-surface-container w-8 h-8 rounded-full flex items-center justify-center text-primary flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface"><span class="font-semibold">John Doe</span> checked in for Park Cleanup.</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1 text-xs">10 minutes ago</p>
+</div>
+</div>
+<!-- Activity Item 2 -->
+<div class="flex gap-3 items-start pb-4 border-b border-outline-variant last:border-0 last:pb-0">
+<div class="bg-surface-container w-8 h-8 rounded-full flex items-center justify-center text-tertiary-container flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-sm">description</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface"><span class="font-semibold">Sarah Smith</span> submitted a new application.</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1 text-xs">2 hours ago</p>
+</div>
+</div>
+<!-- Activity Item 3 -->
+<div class="flex gap-3 items-start pb-4 border-b border-outline-variant last:border-0 last:pb-0">
+<div class="bg-surface-container w-8 h-8 rounded-full flex items-center justify-center text-secondary flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-sm">celebration</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface"><span class="font-semibold">Food Drive</span> event was completed successfully.</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1 text-xs">Yesterday</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
