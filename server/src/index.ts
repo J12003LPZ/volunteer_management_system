@@ -5,6 +5,7 @@ import { getEnv } from './env';
 import authRoutes from './routes/auth';
 import volunteersRoutes from './routes/volunteers';
 import eventsRoutes from './routes/events';
+import shiftsRoutes from './routes/shifts';
 import { errorHandler } from './middleware/error';
 
 export function createApp() {
@@ -16,6 +17,7 @@ export function createApp() {
   app.use('/api/auth', authRoutes);
   app.use('/api/volunteers', volunteersRoutes);
   app.use('/api/events', eventsRoutes);
+  app.use('/api/shifts', shiftsRoutes);
   app.use(errorHandler);
   return app;
 }
