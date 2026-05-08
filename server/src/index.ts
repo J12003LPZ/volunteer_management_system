@@ -10,6 +10,8 @@ import attendanceRoutes from './routes/attendance';
 import messagesRoutes from './routes/messages';
 import reportsRoutes from './routes/reports';
 import settingsRoutes from './routes/settings';
+import uploadsRoutes from './routes/uploads';
+import { localUploadDir } from './storage/local';
 import { errorHandler } from './middleware/error';
 
 export function createApp() {
@@ -17,6 +19,9 @@ export function createApp() {
   const app = express();
   app.use(cors({ origin: env.CLIENT_URL, credentials: true }));
   app.use(express.json({ limit: '2mb' }));
+  if (env.STORAGE_DRIVER === 'local') {
+    app.use('/uploads', express.static(localUploadDir));
+  }
   app.get('/api/health', (_req, res) => res.json({ ok: true, driver: env.DB_DRIVER }));
   app.use('/api/auth', authRoutes);
   app.use('/api/volunteers', volunteersRoutes);
@@ -26,6 +31,7 @@ export function createApp() {
   app.use('/api/messages', messagesRoutes);
   app.use('/api/reports', reportsRoutes);
   app.use('/api/settings', settingsRoutes);
+  app.use('/api/uploads', uploadsRoutes);
   app.use(errorHandler);
   return app;
 }
