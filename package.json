@@ -2,7 +2,10 @@
   "name": "volunteer-management-system",
   "private": true,
   "version": "0.0.0",
-  "workspaces": ["client", "server"],
+  "workspaces": [
+    "client",
+    "server"
+  ],
   "scripts": {
     "dev": "concurrently -k -n server,client -c blue,green \"npm:dev:server\" \"npm:dev:client\"",
     "dev:client": "npm --workspace @vms/client run dev",
@@ -10,9 +13,12 @@
     "build": "npm --workspace @vms/client run build && npm --workspace @vms/server run build",
     "db:migrate": "npm --workspace @vms/server run db:migrate",
     "db:seed": "npm --workspace @vms/server run db:seed",
-    "test": "npm --workspace @vms/client run test && npm --workspace @vms/server run test"
+    "test": "npm --workspace @vms/client run test && npm --workspace @vms/server run test",
+    "e2e": "playwright test",
+    "e2e:ui": "playwright test --ui"
   },
   "devDependencies": {
+    "@playwright/test": "^1.55.1",
     "concurrently": "^9.0.1"
   }
 }
