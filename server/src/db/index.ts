@@ -2,16 +2,24 @@ import { createRequire } from 'node:module';
 import { mkdirSync } from 'node:fs';
 import { dirname, isAbsolute, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { neon } from '@neondatabase/serverless';
+import { drizzle as drizzleNeon } from 'drizzle-orm/neon-http';
 import { getEnv } from '../env';
 import * as schema from './schema';
 
 const nodeRequire = createRequire(import.meta.url);
 
-const here = dirname(fileURLToPath(import.meta.url));
-const repoRoot = resolve(here, '..', '..', '..');
+function repoRootForSqlite(): string {
+  try {
+    const here = dirname(fileURLToPath(import.meta.url));
+    return resolve(here, '..', '..', '..');
+  } catch {
+    return process.cwd();
+  }
+}
 
 function resolveSqlitePath(p: string): string {
-  return isAbsolute(p) ? p : resolve(repoRoot, p);
+  return isAbsolute(p) ? p : resolve(repoRootForSqlite(), p);
 }
 
 type Db = unknown;
@@ -21,6 +29,7 @@ export function getDb() {
   if (cached) return cached;
   const env = getEnv();
   if (env.DB_DRIVER === 'sqlite') {
+    // better-sqlite3 is a native module; load lazily so it's optional on Vercel.
     const Database = nodeRequire('better-sqlite3');
     const { drizzle } = nodeRequire('drizzle-orm/better-sqlite3');
     const sqlitePath = resolveSqlitePath(env.SQLITE_PATH!);
@@ -30,10 +39,8 @@ export function getDb() {
     sqlite.pragma('foreign_keys = ON');
     cached = drizzle(sqlite, { schema });
   } else {
-    const { neon } = nodeRequire('@neondatabase/serverless');
-    const { drizzle } = nodeRequire('drizzle-orm/neon-http');
     const sql = neon(env.DATABASE_URL!);
-    cached = drizzle(sql, { schema });
+    cached = drizzleNeon(sql, { schema });
   }
   return cached;
 }
