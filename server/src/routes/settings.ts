@@ -8,14 +8,20 @@ import { validateBody } from '../middleware/validate';
 const r = Router();
 r.use(requireAuth);
 
+const serialize = (row: any) => ({
+  ...row,
+  volunteerStatuses: row.volunteerStatuses ? JSON.parse(row.volunteerStatuses) : [],
+  eventCategories: row.eventCategories ? JSON.parse(row.eventCategories) : [],
+});
+
 r.get('/', async (_req, res) => {
   const db = getDb() as any;
   const [row] = await db.select().from(schema.settings).limit(1);
   if (!row) {
     const [created] = await db.insert(schema.settings).values({}).returning();
-    return res.json(created);
+    return res.json(serialize(created));
   }
-  res.json(row);
+  res.json(serialize(row));
 });
 
 const Input = z.object({
@@ -34,10 +40,10 @@ r.put('/', requireRole('admin'), validateBody(Input), async (req, res) => {
   const [existing] = await db.select().from(schema.settings).limit(1);
   if (!existing) {
     const [created] = await db.insert(schema.settings).values(patch).returning();
-    return res.json(created);
+    return res.json(serialize(created));
   }
   const [row] = await db.update(schema.settings).set(patch).where(eq(schema.settings.id, existing.id)).returning();
-  res.json(row);
+  res.json(serialize(row));
 });
 
 export default r;
