@@ -1,15 +1,11 @@
-import { useAuth } from '@/lib/auth';
-import { useNavigate } from 'react-router-dom';
 import {
   DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { useNavigate } from 'react-router-dom';
 
 export function TopHeader() {
-  const user = useAuth((s) => s.user);
-  const logout = useAuth((s) => s.logout);
   const navigate = useNavigate();
-  const initials = (user?.email ?? 'A').slice(0, 2).toUpperCase();
   return (
     <header className="h-16 bg-surface-container-lowest border-b border-outline-variant flex items-center justify-between px-container-padding">
       <div className="relative max-w-md w-full">
@@ -27,12 +23,11 @@ export function TopHeader() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button className="flex items-center gap-2">
-              <Avatar><AvatarFallback>{initials}</AvatarFallback></Avatar>
+              <Avatar><AvatarFallback>AD</AvatarFallback></Avatar>
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem onClick={() => navigate('/settings')}>Settings</DropdownMenuItem>
-            <DropdownMenuItem onClick={() => { logout(); navigate('/login'); }}>Sign out</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

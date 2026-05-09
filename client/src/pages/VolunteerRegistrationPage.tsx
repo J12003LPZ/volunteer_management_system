@@ -27,8 +27,8 @@ export function VolunteerRegistrationPage() {
                 <span className="material-symbols-outlined text-6xl text-secondary">check_circle</span>
                 <h2 className="mt-3 text-2xl font-semibold text-on-surface">Application submitted</h2>
                 <p className="mt-2 text-on-surface-variant">We'll review and reach out via email.</p>
-                <button className="mt-4 text-primary font-medium hover:underline" onClick={() => navigate('/login')}>
-                  Back to sign-in
+                <button className="mt-4 text-primary font-medium hover:underline" onClick={() => navigate('/dashboard')}>
+                  Go to dashboard
                 </button>
               </div>
             ) : (
