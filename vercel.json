@@ -1,12 +1,16 @@
 {
+  "version": 2,
   "buildCommand": "npm install && npm --workspace @vms/client run build",
   "outputDirectory": "client/dist",
   "rewrites": [
-    { "source": "/api/:path*", "destination": "/api/server" }
+    { "source": "/api/:path*", "destination": "/api/server" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
   ],
   "functions": {
     "api/server.ts": {
-      "runtime": "@vercel/node@4"
+      "runtime": "@vercel/node@4",
+      "maxDuration": 30
     }
-  }
+  },
+  "framework": null
 }
