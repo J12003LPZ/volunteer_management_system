@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "npm install && npm --workspace @vms/server run build && npm --workspace @vms/client run build",
+  "buildCommand": "npm install && node scripts/build-server.mjs && npm --workspace @vms/client run build",
   "outputDirectory": "client/dist",
   "rewrites": [
     { "source": "/api/:path*", "destination": "/api/server" },

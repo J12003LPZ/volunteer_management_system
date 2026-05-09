@@ -24,6 +24,7 @@ dist-ssr
 *.sw?
 
 # VMS
+api/_server.cjs
 .env
 server/data/
 server/uploads/
@@ -34,3 +35,5 @@ coverage/
 playwright-report/
 test-results/
 
+
+.vercel

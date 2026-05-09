@@ -7,11 +7,6 @@ import * as schema from './schema';
 
 const nodeRequire = createRequire(import.meta.url);
 
-// Resolve the SQLite file relative to the repo root, regardless of the cwd
-// the script is invoked from. The repo root is two levels up from
-// `server/src/db/`. This mirrors the resolution used in `migrate.ts` so that
-// a relative SQLITE_PATH like `./server/data/vms.db` always points at the same
-// file whether the process runs from the repo root or the `server/` workspace.
 const here = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(here, '..', '..', '..');
 

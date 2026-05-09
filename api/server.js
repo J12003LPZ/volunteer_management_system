@@ -1,14 +1,4 @@
-// CJS wrapper that dynamic-imports the compiled ESM server
-let appPromise;
-
-function getApp() {
-  if (!appPromise) {
-    appPromise = import('../server/dist/index.js').then((m) => m.createApp());
-  }
-  return appPromise;
-}
-
-module.exports = async (req, res) => {
-  const app = await getApp();
-  app(req, res);
-};
+// Entry point for Vercel serverless function.
+// _server.cjs is built by esbuild during `vercel build`.
+const { createApp } = require('./_server.cjs');
+module.exports = createApp();
