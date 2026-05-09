@@ -24,7 +24,7 @@ dist-ssr
 *.sw?
 
 # VMS
-api/_server.cjs
+api/server-bundle.cjs
 .env
 server/data/
 server/uploads/

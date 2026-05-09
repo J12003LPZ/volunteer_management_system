@@ -5,7 +5,7 @@ await build({
   bundle: true,
   platform: 'node',
   format: 'cjs',
-  outfile: 'api/_server.cjs',
+  outfile: 'api/server-bundle.cjs',
   external: ['better-sqlite3'],
   banner: {
     js: "const _importMetaUrl = require('url').pathToFileURL(__filename).href;",
