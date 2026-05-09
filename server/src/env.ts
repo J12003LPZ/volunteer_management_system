@@ -24,16 +24,19 @@ function resolveHere(): string {
 // The repo-root .env may live at <here>/../../.env (when running from src/) or
 // at <cwd>/../.env (when drizzle-kit runs from the server workspace) or at
 // <cwd>/.env (when running from repo root). Try each in order.
-const here = resolveHere();
-const candidates = [
-  path.resolve(here, '..', '..', '.env'),
-  path.resolve(process.cwd(), '..', '.env'),
-  path.resolve(process.cwd(), '.env'),
-];
-for (const candidate of candidates) {
-  if (existsSync(candidate)) {
-    config({ path: candidate });
-    break;
+// Skip dotenv on Vercel — env vars are injected directly into process.env.
+if (!process.env.VERCEL) {
+  const here = resolveHere();
+  const candidates = [
+    path.resolve(here, '..', '..', '.env'),
+    path.resolve(process.cwd(), '..', '.env'),
+    path.resolve(process.cwd(), '.env'),
+  ];
+  for (const candidate of candidates) {
+    if (existsSync(candidate)) {
+      config({ path: candidate });
+      break;
+    }
   }
 }
 
