@@ -17,7 +17,10 @@ import { errorHandler } from './middleware/error';
 export function createApp() {
   const env = getEnv();
   const app = express();
-  app.use(cors({ origin: env.CLIENT_URL, credentials: true }));
+  const allowedOrigin = env.CLIENT_URL === 'http://localhost:5173'
+    ? true  // reflect origin in dev / same-domain deployments
+    : env.CLIENT_URL;
+  app.use(cors({ origin: allowedOrigin, credentials: true }));
   app.use(express.json({ limit: '2mb' }));
   if (env.STORAGE_DRIVER === 'local') {
     app.use('/uploads', express.static(localUploadDir));
