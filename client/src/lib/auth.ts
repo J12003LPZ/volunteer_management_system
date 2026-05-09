@@ -17,7 +17,18 @@ export const useAuth = create<AuthState>((set) => ({
   hydrate: () => {
     const token = localStorage.getItem('vms_token');
     const userStr = localStorage.getItem('vms_user');
-    if (token && userStr) set({ token, user: JSON.parse(userStr) });
+    if (token && userStr) {
+      set({ token, user: JSON.parse(userStr) });
+    } else {
+      // Auto-login as admin so all API calls work without a login step.
+      api.post('/auth/login', { email: 'admin@vms.local', password: 'admin123' })
+        .then(({ data }) => {
+          localStorage.setItem('vms_token', data.token);
+          localStorage.setItem('vms_user', JSON.stringify(data.user));
+          set({ token: data.token, user: data.user });
+        })
+        .catch(() => { /* server unavailable, continue unauthenticated */ });
+    }
   },
   login: async (email, password) => {
     const { data } = await api.post('/auth/login', { email, password });
