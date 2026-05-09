@@ -9,16 +9,19 @@ function resolveUploadDir(): string {
   const env = getEnv();
   if (!env.UPLOAD_DIR) return resolve(process.cwd(), 'uploads');
   if (env.UPLOAD_DIR.startsWith('.')) {
-    // file lives at server/src/storage/local.ts → up 3 levels = repo root
-    const here = fileURLToPath(import.meta.url);
-    const repoRoot = resolve(here, '..', '..', '..', '..');
-    return resolve(repoRoot, env.UPLOAD_DIR);
+    try {
+      const here = fileURLToPath(import.meta.url);
+      const repoRoot = resolve(here, '..', '..', '..', '..');
+      return resolve(repoRoot, env.UPLOAD_DIR);
+    } catch {
+      return resolve(process.cwd(), env.UPLOAD_DIR);
+    }
   }
   return env.UPLOAD_DIR;
 }
 
 export const localUploadDir = resolveUploadDir();
-mkdirSync(localUploadDir, { recursive: true });
+try { mkdirSync(localUploadDir, { recursive: true }); } catch { /* read-only fs on Vercel */ }
 
 const storage = multer.diskStorage({
   destination: localUploadDir,
