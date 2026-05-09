@@ -1,5 +1,5 @@
 import { getDb, schema } from './index';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 async function main() {
   const db = getDb() as any;
